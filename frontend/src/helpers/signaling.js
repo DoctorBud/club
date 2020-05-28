@@ -1,3 +1,7 @@
+/* use strict; */
+
+import EventTarget from '@ungap/event-target'
+
 export default class SignalingServer extends EventTarget {
   constructor() {
     super()

@@ -6,62 +6,55 @@
         display: inline-block;
         width: 33%;
       }
+
+      p.note {
+        font-size: 1.4em;
+        padding: 20px;
+        border: 5px solid lightblue;
+        border-radius: 10px;
+      }
+
+      div.octocat {
+        display: inline-block;
+        padding: 0;
+        height: 30px;
+        width: 30px;
+        background-size: cover;
+        background-image: url('images/Octocat.jpg');
+        background-repeat: no-repeat;
+      }
     </style>
+    <script src="https://unpkg.com/@ungap/event-target"></script>
     <script src="/js/localmedia.js"></script>
     <script src="/js/peering.js"></script>
     <script src="/js/signaling.js"></script>
   </head>
   <body>
-    <div id="videos">
-      <video id="local" autoplay muted></video>
-    </div>
-    <script type="text/javascript">
-      let local = new LocalMedia("local")
-      local.setupMedia().then(() => {
-        let signals = new SignalingServer()
-        let peers = new Peering("videos", local.getStream(), signals)
+    <h1>&#x1F399;&nbsp;<b>club</b>&nbsp;&#x1F3A4;</h1>
+    <h2>WebRTC-enabled video chat and virtual karaoke bar</h2>
+    <h4><a href="https://github.com/ryanrolds/club/"><div class="octocat"></div>GitHub Source</a></h4>
 
-        signals.addEventListener("connected", async (event) => {
-          await local.onConnected()
-          await peers.onConnected()
+    <p class="note">
+      This website is for debugging and experimenting with the <code>club</code> backend services. It is not intended for general users. Most users will want to use the <code>club</code> web application.
+    </p>
 
-          signals.sendJoin()
-        })
-
-        signals.addEventListener("join", async (event) => {
-          let offer = await peers.onJoin(event.detail)
-          signals.sendOffer(event.detail.peerId, offer)
-        })
-
-        signals.addEventListener("leave", async (event) => {
-          await peers.onLeave(event.detail)
-        })
-
-        signals.addEventListener("offer", async (event) => {
-            let answer = await peers.onOffer(event.detail)
-          signals.sendAnswer(event.detail.peerId, answer)
-        })
-
-        signals.addEventListener("icecandidate", async (event) => {
-          peers.onICECandidate(event.detail)
-        })
-
-        signals.addEventListener("answer", async (event) => {
-          await peers.onAnswer(event.detail)
-        })
-
-        signals.addEventListener("disconnected", async (event) => {
-          await local.onDisconnected()
-          await peers.onDisconnected()
-        })
-
-        let isHTTPS = location.protocol !== 'https:'
-        signals.connect((isHTTPS ? "ws" : "wss") + "://" + location.host + "/room")
-
-        window.addEventListener("unload", function() {
-          signals.sendLeave()
-        });
-      })
-    </script>
+    <h2>Experiments and Examples</h2>
+    <ul>
+      <li>
+        <a href="examples/peer.html">Peering Example</a>
+      </li>
+      <li>
+        <a href="examples/mirror.html">Mirror Example</a>
+      </li>
+      <li>
+        <a href="examples/local.html">Local Example</a>
+      </li>
+      <li>
+        <a href="examples/stun.html">Stun Example</a>
+      </li>
+      <li>
+        <a href="examples/audio.html">Audio Example</a>
+      </li>
+    </ul>
   </body>
 </html>

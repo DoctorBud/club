@@ -166,8 +166,11 @@ export default function StreamerCardList() {
   return (
     <Container className={classes.cardGrid}>
       <Grid container spacing={1}>
-        <Grid item key={stream} xs={12} sm={6}>
-          <StreamerCard stream={stream} muted />
+        <Grid item key={stream[0]} xs={12} sm={6}>
+          <pre>
+            { JSON.stringify(stream[0], null, 2) }
+          </pre>
+          <StreamerCard stream={stream[0]} muted />
         </Grid>
         {peers.length &&
           peers.map((peer) => (

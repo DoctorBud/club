@@ -84,6 +84,7 @@ class Peering {
 
     peer.addEventListener("track", (track) => {
       video.srcObject = track.streams[0]
+      console.log('video.srcObject', video.srcObject);
     })
 
     return peer

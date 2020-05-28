@@ -32,4 +32,5 @@ run: build
 	ENV=prod ./club
 
 run-debug: build
+	# Serving http://localhost:3001
 	ENV=dev ./club

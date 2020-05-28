@@ -34,7 +34,7 @@ const StreamerCard = ({ stream, muted }) => {
 }
 
 StreamerCard.propTypes = {
-  stream: PropTypes.func.isRequired,
+  stream: PropTypes.oneOfType([PropTypes.object]).isRequired,
   muted: PropTypes.bool,
 }
 
