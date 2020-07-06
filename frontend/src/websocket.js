@@ -43,7 +43,7 @@ export default ({ children }) => {
 
     const notifyPeerEventListeners = (peerID, type, event) => {
       if (!lodash.has(peerEventListeners, peerID)) {
-        throw new Error('unknown peerID')
+        throw new Error(`unknown peerID '${peerID}'. ${JSON.stringify(event)}`)
       }
 
       peerEventListeners[peerID].forEach((listener) => {

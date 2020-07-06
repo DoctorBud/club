@@ -12,6 +12,13 @@ import WebSocketProvider from './websocket'
 import App from './views/app'
 import theme from './theme'
 
+// (async () => {
+//   const opts = { audio: true, video: true }
+//   const mediaStream = await navigator.mediaDevices.getUserMedia(opts)
+//   console.log(mediaStream)
+// })();
+
+
 ReactDOM.render(
   <Provider store={store}>
     <WebSocketProvider>
