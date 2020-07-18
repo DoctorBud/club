@@ -73,9 +73,9 @@ class Peering {
     let video = document.createElement("video")
     video.id = peerId
     video.autoplay = true
-    video.controls = true
-    video.muted = true // https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide
-    video.poster = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=='
+    // video.controls = true
+    // video.muted = true // https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide
+    // video.poster = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=='
 
     this.videosElm.appendChild(video)
 

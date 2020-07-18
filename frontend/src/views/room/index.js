@@ -22,8 +22,12 @@ Room.propTypes = {
 }
 
 const mapStateToProps = (state) => {
+  const sortedGroups = state.room.groups
+    .slice(0)
+    .sort((left, right) => (left.name > right.name ? 1 : -1))
+
   return {
-    groups: state.room.groups,
+    groups: sortedGroups,
   }
 }
 
